@@ -11,6 +11,9 @@ function shoutTen(){
 }
 
 function intialize(){
+    messageOutput = document.getElementById("output");
+
+    message = "";
     num1 = 3;
     num2 = 7
     outputDiv = document.getElementById("divout");
@@ -19,7 +22,7 @@ function intialize(){
     negativeButton = document.getElementById("negativebtn");
     myNumber = 0;
     negativesAllowed = false;
-
+   
     display();
 }
 
@@ -52,18 +55,40 @@ function addOne(){
     display();
 }
 
-function subtractone(){
-    if (myNumber > 0){
-        myNumber --;
+function subtractOne(){
+    myNumber --;
+    if (myNumber < 0 && !negativesAllowed){
+        myNumber = 0;
     }
     display();
 }
 
 function display(){
+    
     numberOutput.innerHTML = myNumber;
+
+    if (!negativesAllowed){
+        negativeButton.innerHTML = "Negatives are OFF";
+    } else {
+        negativeButton.innerHTML = "Negatives are ON";
+    }
 }
 
 function toggleNegatives(){
      negativesAllowed = !negativesAllowed
     display();
+}
+
+function display2(){
+    messageOutput.innerHTML = message;
+}
+
+function addA(){
+    message += "A";
+    display2();
+}
+
+function addCharacter(ch){
+    message += ch;
+    display2();
 }
